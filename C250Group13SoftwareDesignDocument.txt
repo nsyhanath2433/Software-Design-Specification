@@ -19,9 +19,166 @@ and payment systems). Together, these components ensure seamless user experience
 
 JIN Films' UMl Diagram
 
-	The UML diagram for JIN Films TMS represents the online ticketing system's processes and responsibilities. The central class is Movie includes the variables such as movieName, date, time, movieFormat, and seats which main goal is to store essential information such as the movie name, date, format and seating avaliablity. The operations for this class includes getName() which recieves movie title, getAvailableSeats() to get avaliable open seats and isSeatTake(index) which checks the seat is taken. The ticket class represents what the tickets information is stored such as the seat location and time. It includes seat((int,int)), price(int) and buyingTicket() to process buying a movie ticket. MakePayment class handles purchases by confirming transactions, updating seats and sending confirmation emails it work. It's attributions consists of confirmationID(int) and myTickets(ticket) with methods confirmPurchase(ticket) to produce confirmation IDs, updateSeats(ticket) to change avaliablity, and sendConfirmationEmail to notify users of their purchase of their ticket. MovieList class stores the list of movies allowing the class to send updates to available options. The class maintains a movies(Movie[]) array and provides updateMovie(Movie) operation to manage the list of movies. The accountInfo class works together with UserInfo as the accountInfo class includes the customer's credentials, contact details, and membership status. The class includes the user's username, password, name, email, and membership to store the user's neccessary info to buy a movie ticket. It works together with UserInfo as it provides functions for users to view and pick movies, cancel tickets or manage their membership. The Websiteinfo class integrate functions such as addMovie(Movie, int), deleteMovie(movie), and addMembership(Membership) to provide functions to operate sufficiently on it's role to provide info to the user. The last class UserInfo includes discountStatus(bool) and operations such as viewMovies(), pickMovie(Movie), cancelMovie(Ticket) and cancelMembership(Membership) which allows the user to interact with these operations as these functions provide the necessary tools to provide a user friendly experience on a movie theater platform. The UML diagram shows a clear structure that consists of organized data storage, friendly user interaction and transaction processing in a ticketing platform.
-
-
+	The UML diagram for JIN Films TMS represents the online ticketing system's processes and responsibilities. The central class is Movie includes the variables such as movieName, date, time, movieFormat, and seats which main goal is to store essential information such as the movie name, date, format and seating avaliablity. The operations for this class includes 
+	getName() which recieves movie title, getAvailableSeats() to get avaliable open seats and isSeatTake(index) which checks the seat is taken. The ticket class represents what the tickets information is stored such as the seat location and time. It includes seat((int,int)), price(int) and buyingTicket() to process buying a movie ticket. MakePayment class handles 
+	purchases by confirming transactions, updating seats and sending confirmation emails it work. It's attributions consists of confirmationID(int) and myTickets(ticket) with methods confirmPurchase(ticket) to produce confirmation IDs, updateSeats(ticket) to change avaliablity, and sendConfirmationEmail to notify users of their purchase of their ticket. MovieList 
+	class stores the list of movies allowing the class to send updates to available options. The class maintains a movies(Movie[]) array and provides updateMovie(Movie) operation to manage the list of movies. The accountInfo class works together with UserInfo as the accountInfo class includes the customer's credentials, contact details, and membership status. 
+	The class includes the user's username, password, name, email, and membership to store the user's neccessary info to buy a movie ticket. It works together with UserInfo as it provides functions for users to view and pick movies, cancel tickets or manage their membership. The Websiteinfo class integrate functions such as addMovie(Movie, int), deleteMovie(movie), 
+	and addMembership(Membership) to provide functions to operate sufficiently on it's role to provide info to the user. The last class UserInfo includes discountStatus(bool) and operations such as viewMovies(), pickMovie(Movie), cancelMovie(Ticket) and cancelMembership(Membership) which allows the user to interact with these operations as these functions provide 
+	the necessary tools to provide a user friendly experience on a movie theater platform. The UML diagram shows a clear structure that consists of organized data storage, friendly user interaction and transaction processing in a ticketing platform.
 
 	
-Development plan and timeline: 
+JIN Films' Development plan and timeline: 
+
+	### Description of Classes
+
+ UserAccount: A base class representing any individual who interacts with the system. It handles core functionalities like authentication and profile management.
+ Customer: A specialized type of `UserAccount` that represents a moviegoer. This class manages booking history, payment preferences, and loyalty program details. It can represent both registered members and temporary guests.
+ Employee: A specialized type of `UserAccount` for theater staff. This class provides access to administrative functions, such as managing movie schedules, viewing sales reports, and updating website content.
+ Movie: Represents a film available at the theater. It stores all descriptive information, including title, genre, duration, and associated media like posters and trailers.
+ Showtime: Represents a specific screening of a `Movie` in a particular `Auditorium` at a set date and time. It is central to the booking process, tracking seat availability.
+ Theater: Represents the physical movie theater location, containing one or more auditoriums.
+ Auditorium: Represents a single screening room within a `Theater`, defined by its unique seating layout and capacity.
+ Seat: Represents a single seat within an `Auditorium`. It holds state information, such as whether it is available, reserved, or accessible.
+ Booking: Represents a completed transaction made by a `Customer`. It aggregates all information related to a ticket purchase, including the showtime, selected seats, tickets, and payment details.
+ Ticket: Represents a single admission for a specific `Seat` at a `Showtime`. Each `Booking` can contain multiple tickets. It includes a unique identifier, often in the form of a QR code.
+ Payment: Encapsulates the financial transaction details for a `Booking`. It interfaces with external payment gateways to process charges and refunds.
+ Membership: Manages a customer's loyalty status, including their membership tier, accumulated points, and available rewards or discounts.
+
+### Description of Attributes
+
+| Class | Attribute | Data Type | Description |
+| :--- | :--- | :--- | :--- |
+| UserAccount | `userID` | `String` | Unique identifier for the user account. |
+| | `email` | `String` | User's email address, used for login and communication. |
+| | `passwordHash` | `String` | Hashed version of the user's password for security. |
+| | `firstName` | `String` | User's first name. |
+| | `lastName` | `String` | User's last name. |
+| Customer | `purchaseHistory` | `List<Booking>` | A list of all past bookings made by the customer. |
+| | `paymentPreferences` | `List<PaymentMethod>`| Saved payment methods for faster checkout. |
+| | `loyaltyInfo` | `Membership` | The customer's membership and loyalty status. |
+| | `isGuest` | `boolean` | Flag to indicate if the user is a guest or registered. |
+| Employee | `employeeID` | `String` | Unique identifier for the employee. |
+| | `role` | `String` | The employee's job title (e.g., 'Manager', 'Staff'). |
+| | `accessLevel` | `int` | Permission level determining accessible functions. |
+| Membership | `membershipID` | `String` | Unique identifier for the membership. |
+| | `tier` | `String` | The membership level (e.g., 'Standard', 'Premium'). |
+| | `loyaltyPoints` | `int` | Current balance of redeemable loyalty points. |
+| Movie | `movieID` | `String` | Unique identifier for the movie. |
+| | `title` | `String` | The title of the movie. |
+| | `genre` | `String` | The genre of the movie (e.g., 'Action', 'Comedy'). |
+| | `durationMinutes` | `int` | The runtime of the movie in minutes. |
+| | `rating` | `String` | The MPAA rating (e.g., 'PG-13', 'R'). |
+| | `description` | `String` | A brief synopsis of the movie. |
+| Showtime | `showtimeID` | `String` | Unique identifier for the specific screening. |
+| | `movie` | `Movie` | The `Movie` object being screened. |
+| | `auditorium` | `Auditorium` | The `Auditorium` where the movie is being shown. |
+| | `startTime` | `DateTime` | The start date and time of the screening. |
+| Seat | `seatID` | `String` | Unique identifier for the seat (e.g., 'A1', 'B12'). |
+| | `isReserved` | `boolean` | Status indicating if the seat is currently reserved or available. |
+| | `isAccessible` | `boolean` | Flag for ADA-compliant accessible seating. |
+| Booking | `bookingID` | `String` | Unique identifier for the booking transaction. |
+| | `customer` | `Customer` | The customer who made the booking. |
+| | `showtime` | `Showtime` | The showtime for which the tickets were purchased. |
+| | `tickets` | `List<Ticket>` | A list of all individual tickets included in the booking. |
+| | `totalPrice` | `float` | The total cost of the booking. |
+| | `bookingTime` | `DateTime` | The timestamp when the booking was completed. |
+| Ticket | `ticketID` | `String` | Unique identifier for the ticket, containing QR code data. |
+| | `seat` | `Seat` | The specific seat assigned to this ticket. |
+| | `isValidated` | `boolean` | Status indicating if the ticket has been scanned for entry. |
+| Payment | `transactionID` | `String` | The unique ID provided by the external payment gateway. |
+| | `amount` | `float` | The amount charged in the transaction. |
+| | `status` | `String` | The status of the payment (e.g., 'Completed', 'Failed', 'Refunded'). |
+
+### Description of Operations
+
+| Class | Operation | Parameters | Return Type | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| UserAccount | `login()` | `email: String`, `password: String` | `boolean` | Authenticates the user and returns `true` on success. |
+| | `logout()` | `None` | `void` | Ends the user's current session. |
+| | `updateProfile()` | `newDetails: UserDetails` | `boolean` | Updates the user's account information. |
+| Customer | `makeBooking()` | `showtime: Showtime`, `seats: List<Seat>` | `Booking` | Creates a new booking and returns the `Booking` object. |
+| | `cancelBooking()` | `bookingID: String` | `boolean` | Cancels a booking and initiates a refund. |
+| Employee | `addMovie()` | `movieDetails: Movie` | `boolean` | Adds a new movie to the system database. |
+| | `updateShowtime()`| `showtimeID: String`, `newDetails: Showtime`| `boolean` | Modifies an existing movie showtime. |
+| | `generateSalesReport()`| `startDate: Date`, `endDate: Date` | `Report` | Generates a sales report for a specified period. |
+| | `validateTicket()`| `ticketID: String` | `boolean` | Validates a customer's ticket for entry. |
+| Showtime | `isSeatAvailable()`| `seat: Seat` | `boolean` | Checks if a specific seat is available for booking. |
+| | `reserveSeats()` | `seats: List<Seat>` | `boolean` | Temporarily reserves seats during the payment process. |
+| | `releaseSeats()` | `seats: List<Seat>` | `void` | Releases previously reserved seats if a booking fails. |
+| Booking | `generateConfirmation()`| `None` | `Confirmation`| Creates a confirmation object containing all booking details. |
+| | `sendEmailConfirmation()`| `None` | `void` | Sends a booking confirmation with e-tickets to the customer's email. |
+| Payment | `processPayment()`| `paymentDetails: PaymentInfo` | `boolean` | Communicates with the payment gateway to authorize and capture a charge. |
+| | `issueRefund()` | `None` | `boolean` | Initiates a refund for the transaction through the payment gateway. |
+
+Development plan and timeline:
+--------------------------------
+
+This development plan outlines the strategy, team roles, task breakdown, and projected timeline for the successful completion of the JIN Films Theater Management System (TMS). The project will be executed over an eight-week period, following an agile methodology with four two-week sprints.
+
+#### Team Member Responsibilities
+
+To ensure clear ownership and efficient progress, responsibilities are assigned as follows:
+
+ Izak Vucharatavintara (Project Lead & Back-End Developer):
+     Primary Role: Oversees the overall project architecture, database design, and server-side logic. Ensures that all back-end components—such as user authentication, payment processing, and movie management APIs—are robust, secure, and scalable.
+     Secondary Role: Manages the integration of all system components and leads the final testing and deployment phases.
+
+ Jonathan Hoang (Front-End & UI/UX Developer):
+     Primary Role: Leads the design and implementation of the user interface for both the customer-facing website and the internal employee portal. Focuses on creating an intuitive, responsive, and accessible user experience across all devices.
+     Secondary Role: Develops the interactive seating map and ensures seamless data flow between the front-end and back-end services.
+
+ Nathan Syhanath (Database & QA Engineer):
+     Primary Role: Responsible for the logical and physical design of the User, Movie, and Theater databases. Manages data integrity, security protocols, and performance optimization.
+     Secondary Role: Leads the Quality Assurance (QA) process, including creating test cases, performing functional and stress testing, and documenting bugs.
+
+#### Task Breakdown and Timeline
+
+The project is divided into four sprints, each lasting two weeks.
+
+Sprint 1: Foundation & Core Architecture (Weeks 1-2)
+
+ Goal: Establish the project's foundation, including database schema and core back-end services.
+ Tasks:
+    1.  Finalize System Requirements & Design: All team members collaborate to refine the SWA and UML diagrams.
+    2.  Database Schema Design (Nathan): Design and create the initial schemas for the User Accounts, Movie, and Theater databases.
+    3.  Set Up Development Environment (Izak): Configure the server, version control (Git), and project management tools.
+    4.  Develop User Authentication API (Izak): Implement the back-end logic for user registration, login, and session management.
+    5.  Wireframe UI/UX Mockups (Jonathan): Create detailed wireframes for the main customer journey pages (Login, Movie Selection, Seating).
+
+Sprint 2: Customer-Facing Features (Weeks 3-4)
+
+ Goal: Develop the primary features for the customer booking experience.
+ Tasks:
+    1.  Implement Front-End UI (Jonathan): Build the HTML, CSS, and JavaScript for the movie selection and showtime pages based on wireframes.
+    2.  Develop Movie & Showtime APIs (Izak): Create endpoints for fetching movie details and available showtimes from the database.
+    3.  Populate Database with Mock Data (Nathan): Add sample movies, theaters, and showtimes to facilitate testing.
+    4.  Integrate Front-End with APIs (All): Connect the UI to the back-end services to display dynamic movie and showtime data.
+    5.  Initial Functional Testing (Nathan): Begin testing the user registration and movie browsing functionalities.
+
+Sprint 3: Booking & Payment Integration (Weeks 5-6)
+
+ Goal: Implement the seat selection, booking, and payment processing functionalities.
+ Tasks:
+    1.  Develop Interactive Seating Map (Jonathan): Build the front-end component for seat selection, ensuring it accurately reflects availability.
+    2.  Implement Booking & Reservation Logic (Izak): Create the back-end logic to reserve seats and create booking records.
+    3.  Integrate Payment Gateway (Izak): Connect the system to a third-party payment service (e.g., Stripe, PayPal) for secure transactions.
+    4.  Develop Confirmation System (Nathan & Izak): Implement the process for sending email confirmations and generating e-tickets.
+    5.  End-to-End Booking Tests (Nathan): Conduct thorough testing of the entire booking flow, from movie selection to payment confirmation.
+
+Sprint 4: Employee Portal & Finalization (Weeks 7-8)
+
+ Goal: Complete the employee portal, conduct final testing, and prepare for deployment.
+ Tasks:
+    1.  Develop Employee Portal UI (Jonathan): Create the interface for movie management and sales reporting.
+    2.  Implement Admin APIs (Izak): Build the back-end endpoints for employees to add/update movies and generate reports.
+    3.  Final QA & Bug Fixes (Nathan): Perform comprehensive system-wide testing, including security, performance, and usability tests.
+    4.  User Acceptance Testing (UAT) (All): Conduct a final review to ensure the system meets all requirements specified in the SRS.
+    5.  Deployment (Izak): Deploy the application to a live server.
+	
+	
+	
+	
+	
+	
+	
