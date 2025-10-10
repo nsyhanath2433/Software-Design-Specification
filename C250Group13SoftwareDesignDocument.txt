@@ -73,7 +73,7 @@ JIN Films' Development plan and timeline:
 | | `isGuest` | `boolean` | Flag to indicate if the user is a guest or registered. |
 | Employee | `employeeID` | `String` | Unique identifier for the employee. |
 | | `role` | `String` | The employee's job title (e.g., 'Manager', 'Staff'). |
-| | `accessLevel` | `int` | Permission level determining accessible functions. |
+| | `accessLevel` | `int` | Permission level determining accessible functions for users. |
 | Membership | `membershipID` | `String` | Unique identifier for the membership. |
 | | `tier` | `String` | The membership level (e.g., 'Standard', 'Premium'). |
 | | `loyaltyPoints` | `int` | Current balance of redeemable loyalty points. |
