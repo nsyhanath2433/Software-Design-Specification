@@ -8,12 +8,18 @@ System Descriptions:
 
 JIN Films' Software Architecture
 
-	The SWA diagram for JIN Films TMS depicts how all parts of the ticket management system interact from the user interface down to the underlying data sources and external systems. At the top of the architecture is the entry layer, which includes the Login Page, Sign Up Page, and Continue as Guest option. These components handle user authentication and
-identity creation. When a user signs up, their details, such as name, email, password, and purchase history, are stored in the User Accounts Database, which also tracks rewards and discounts. Guests bypass account creation but still proceed to ticket booking through a temporary session. The user may also be allowed access to the worker portal if they log in as 
-an employee. It provides administrative access to employees under the WebsiteInfo, Movie Management, and Summary Report sections. Through this portal, workers can retrieve or update movie data, adjust showtimes, and generate reports summarizing system performance and ticket transactions. At the center of the system, the main customer journey begins with the 
-Movie Selection Page, where users select the film they want to see. This page communicates with the Movie Database, which stores available movie times and locations. After choosing a movie, the user proceeds to the Time and Theater Page, where they can view and select showtimes and theaters. The process then continues to the Seat Page, featuring an interactive 
-seating map that queries the Theater Database for layout, available seats, and accessibility (ADA) options. Once seats are chosen, the flow moves to the Pay Page, where users or guests input cardholder details, redeem rewards or discounts, and finalize payments. This step interacts with an external Bank/Payment Gateway, ensuring secure transaction handling and 
-updates to purchase either via email or downloadable formats, and updates the summary report to the worker portal. Overall, the SWA diagram captures a layered architecture where the presentation layer (user and admin interfaces) interacts with the application layer (booking and payment processing) and finally with the data and external services layer (databases 
+	The SWA diagram for JIN Films TMS depicts how all parts of the ticket management system interact from the user interface down to the underlying data sources and external systems. At the top of the 
+architecture is the entry layer, which includes the Login Page, Sign Up Page, and Continue as Guest option. These components handle user authentication and
+identity creation. When a user signs up, their details, such as name, email, password, and purchase history, are stored in the User Accounts Database, which also tracks rewards and discounts. Guests 
+bypass account creation but still proceed to ticket booking through a temporary session. The user may also be allowed access to the worker portal if they log in as 
+an employee. It provides administrative access to employees under the WebsiteInfo, Movie Management, and Summary Report sections. Through this portal, workers can retrieve or update movie data, adjust 
+showtimes, and generate reports summarizing system performance and ticket transactions. At the center of the system, the main customer journey begins with the 
+Movie Selection Page, where users select the film they want to see. This page communicates with the Movie Database, which stores available movie times and locations. After choosing a movie, the user 
+proceeds to the Time and Theater Page, where they can view and select showtimes and theaters. The process then continues to the Seat Page, featuring an interactive 
+seating map that queries the Theater Database for layout, available seats, and accessibility (ADA) options. Once seats are chosen, the flow moves to the Pay Page, where users or guests input cardholder 
+details, redeem rewards or discounts, and finalize payments. This step interacts with an external Bank/Payment Gateway, ensuring secure transaction handling and 
+updates to purchase either via email or downloadable formats, and updates the summary report to the worker portal. Overall, the SWA diagram captures a layered architecture where the presentation layer 
+(user and admin interfaces) interacts with the application layer (booking and payment processing) and finally with the data and external services layer (databases 
 and payment systems). Together, these components ensure seamless user experiences, reliable transactions, and maintainable back-end operations for JIN Films TMS.  
 
 
