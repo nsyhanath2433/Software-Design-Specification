@@ -19,13 +19,21 @@ and payment systems). Together, these components ensure seamless user experience
 
 JIN Films' UMl Diagram
 
-	The UML diagram for JIN Films TMS represents the online ticketing system's processes and responsibilities. The central class is Movie includes the variables such as movieName, date, time, movieFormat, and seats which main goal is to store essential information such as the movie name, date, format and seating avaliablity. The operations for this class includes 
-	getName() which recieves movie title, getAvailableSeats() to get avaliable open seats and isSeatTake(index) which checks the seat is taken. The ticket class represents what the tickets information is stored such as the seat location and time. It includes seat((int,int)), price(int) and buyingTicket() to process buying a movie ticket. MakePayment class handles 
-	purchases by confirming transactions, updating seats and sending confirmation emails it work. It's attributions consists of confirmationID(int) and myTickets(ticket) with methods confirmPurchase(ticket) to produce confirmation IDs, updateSeats(ticket) to change avaliablity, and sendConfirmationEmail to notify users of their purchase of their ticket. MovieList 
-	class stores the list of movies allowing the class to send updates to available options. The class maintains a movies(Movie[]) array and provides updateMovie(Movie) operation to manage the list of movies. The accountInfo class works together with UserInfo as the accountInfo class includes the customer's credentials, contact details, and membership status. 
-	The class includes the user's username, password, name, email, and membership to store the user's neccessary info to buy a movie ticket. It works together with UserInfo as it provides functions for users to view and pick movies, cancel tickets or manage their membership. The Websiteinfo class integrate functions such as addMovie(Movie, int), deleteMovie(movie), 
-	and addMembership(Membership) to provide functions to operate sufficiently on it's role to provide info to the user. The last class UserInfo includes discountStatus(bool) and operations such as viewMovies(), pickMovie(Movie), cancelMovie(Ticket) and cancelMembership(Membership) which allows the user to interact with these operations as these functions provide 
-	the necessary tools to provide a user friendly experience on a movie theater platform. The UML diagram shows a clear structure that consists of organized data storage, friendly user interaction and transaction processing in a ticketing platform.
+	The UML diagram for JIN Films TMS represents the online ticketing system's processes and responsibilities. The central class is Movie includes the variables such as movieName, date, time,
+movieFormat, and seats which main goal is to store essential information such as the movie name, date, format and seating avaliablity. The operations for this class includes getName() which recieves 
+movie title, getAvailableSeats() to get avaliable open seats and isSeatTake(index) which checks the seat is taken. The ticket class represents what the tickets information is stored such as the seat 
+location and time. It includes seat((int,int)), price(int) and buyingTicket() to process buying a movie ticket. MakePayment class handles purchases by confirming transactions, updating seats and 
+sending confirmation emails it work. It's attributions consists of confirmationID(int) and myTickets(ticket) with methods confirmPurchase(ticket) to produce confirmation IDs, updateSeats(ticket) to 
+change avaliablity, and sendConfirmationEmail to notify users of their purchase of their ticket. MovieList class stores the list of movies allowing the class to send updates to available options. The 
+class maintains a movies(Movie[]) array and provides updateMovie(Movie) operation to manage the list of movies. The accountInfo class works together with UserInfo as the accountInfo class includes the
+customer's credentials, contact details, and membership status. The class includes the user's username, password, name, email, and membership to store the user's neccessary info to buy a movie ticket.
+It works together with UserInfo as it provides functions for users to view and pick movies, cancel tickets or manage their membership. The Websiteinfo class integrate functions such as addMovie(Movie,
+int), deleteMovie(movie), and addMembership(Membership) to provide functions to operate sufficiently on it's role to provide info to the user. The last class UserInfo includes discountStatus(bool) and 
+operations such as viewMovies(), pickMovie(Movie), cancelMovie(Ticket) and cancelMembership(Membership) which allows the user to interact with these operations as these functions provide the necessary
+tools to provide a user friendly experience on a movie theater platform. The UML diagram shows a clear structure that consists of organized data storage, friendly user interaction and transaction 
+processing in a ticketing platform.
+
+
 
 	
 JIN Films' Development plan and timeline: 
