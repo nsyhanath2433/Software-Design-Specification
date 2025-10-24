@@ -6,11 +6,9 @@ Group #13
 
 System Description:
 
-The JIN Films Theater managment system(TMS) is an online movie ticketing platform that enables users to browse films, select showtimes,
-reserve seats, and make secure payments. It supports both registered memebers and guest users, offering a simple and reliable booking 
-experience. The system follows a layered architecture that separates the user interface, application logic, and data management to ensure
-efficiency and scalability. Additionally, an employee portal allows staff to manage movie listings, schedules, and reports, maintaining 
-smooth theater operations. 
+The JIN Films Theater managment system(TMS) is an online movie ticketing platform that enables users to browse films, select showtimes, reserve seats, and make secure payments. It supports both registered memebers 
+and guest users, offering a simple and reliable booking experience. The system follows a layered architecture that separates the user interface, application logic, and data management to ensure efficiency and scalability. 
+Additionally, an employee portal allows staff to manage movie listings, schedules, and reports, maintaining smooth theater operations. 
 
 JIN Films' Software Architecture
 
